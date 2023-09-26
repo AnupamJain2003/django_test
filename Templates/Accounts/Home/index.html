@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-In/Sign-Up</title>
+   <link rel="stylesheet" href="{% static 'account/account.css' %}">
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="title">
+            <h1 class="techno-stack">TECHNO STACKS</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam pariatur explicabo magnam vitae recusandae ut ad odio illum, totam doloremque excepturi incidunt est molestias animi facilis dignissimos. Porro, asperiores adipisci.</p>
+        </div>
+
+        <div class="form_box">
+            <div class="btn_box">
+                <div id="btn"></div>
+                <button type="button" class="toggle_btn" onclick="login()">Log in</button>
+                <button type="button" class="toggle_btn" onclick="register()">Register</button>
+            </div>
+            <div class="social_icons">
+                <a href=""><ion-icon class="icon" name="logo-google"></ion-icon></a>
+                <a href=""><ion-icon class="icon" name="logo-facebook"></ion-icon></a>
+                <a href=""><ion-icon class="icon" name="logo-twitter"></ion-icon></a>
+            </div>
+            <form id="login" class="input_group" method="POST" action="{% url 'signin' %}">
+                {% csrf_token %}
+                <div class="form_div">
+                    <input type="text" class="form_input" placeholder=" " name="loginUsername">
+                    <label for="" class="form_label">User Name</label>
+                </div>
+                <div class="form_div">
+                    <input type="password" class="form_input" placeholder=" " name="loginpwd">
+                    <label for="" class="form_label">Password</label>
+                </div>
+                <!-- <div class="form-div">
+                    <select class="role" name="role">
+                        <option selected disabled hidden value="">Select your role</option>
+                        <option value="Student">Student</option>
+                        <option value="Teacher">Teacher</option>
+                        <option value="Administrator">Administrator</option>
+                    </select>
+                </div> -->
+                <input type="checkbox" class="checkbox"><span>Remember Password</span>
+                <button type="submit" class="submit_btn">Log in</button>
+
+            </form>
+            <form id="register" class="input_group" method="POST" action="{% url 'signup' %}">
+                {% csrf_token %}
+                <div class="form_div">
+                    <input type="text" class="form_input" placeholder=" " name="username">
+                    <label class="form_label">User Name</label>
+                </div>
+                <div class="form_div">
+                    <input type="email" class="form_input" placeholder=" " name="email">
+                    <label  class="form_label">Email</label>
+                </div>
+                <div class="form_div">
+                    <input type="password" class="form_input" placeholder=" " name="pwd">
+                    <label  class="form_label">Password</label>
+                </div>
+                <div class="form-div">
+                    <select class="role" name="role">
+                        <option value="Student">Student</option>
+                        <option value="Teacher">Teacher</option>
+                        <option value="Administrator">Administrator</option>
+                    </select>
+                </div>
+                <input type="checkbox" class="checkbox"><span>I agree to the terms & conditions</span>
+                <button type="submit" class="submit_btn2">Register</button>
+            </form>
+        </div>
+    </div>
+    <script src="{% static 'account/account.js' %}"></script>
+</body>
+</html>
